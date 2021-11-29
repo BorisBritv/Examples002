@@ -1,8 +1,20 @@
 ﻿// 50. В двумерном массиве n×k заменить четные элементы на противоположные
 
-void FillArray(int[,] array)                                           // метод заполнения массива
-{
 
+// int[] numbers(int N)
+// {
+//     int[] arr = new int[N];                 // создаю новый массив
+//     for (int i = 0; i < arr.Length; i++)
+//     {
+//         arr[i] = new Random().Next(-9, 10);  // заполняю значениями [0;9]
+//     }
+//     return arr;
+// }
+
+
+int[,] array (int n,int m)                                           // метод заполнения массива
+{
+    int[,] array = new int[n,m];
     for (int i = 0; i < array.GetLength(0); i++)
     {
         for (int j = 0; j < array.GetLength(1); j++)
@@ -10,53 +22,69 @@ void FillArray(int[,] array)                                           // мет
             array[i, j] = new Random().Next(-10, 11);
         }
     }
-
+   return array;
 }
 
 
-void PrintArray(int[,] array)
+string PrintArray(int[,] array)
 {
+    string result = string.Empty;
     for (int i = 0; i < array.GetLength(0); i++)
     {
         for (int j = 0; j < array.GetLength(1); j++)
         {
-            Console.Write($"{array[i, j]} ");
+            result+=($"{array[i, j]} ");
         }
-        Console.WriteLine();
+        
     }
-
+  return result;
 }
 
 
+// string PrintArray(int[] arr)                   //метод печати массива с типом данных стринг,в качестве аргумента приходит массив.
+// {
+//     string result = string.Empty;            // создаем переменную с пустой строкой
+//     for (int i = 0; i < arr.Length; i++)       // делаем перебор всех элементов массива
+//     {
+//         result += $"{ arr[i]} ";                  // кладем в созданную переменную все элементы массива 
+//     }
+//     return result;                              // возвращаем в метод все элементы массива.
+// }
 
 
-
-void NotEvenElements(int[,] array)
+string NotEvenElements(int[,] array)
 {
-    int f = 0;
+
+    string result = string.Empty;
     for (int i = 0; i < array.GetLength(0); i++)
     {
         for (int j = 0; j < array.GetLength(1); j++)
         {
             if (array[i, j] % 2 == 0)
             {
-                f = (array[i, j] + 1);
-                Console.Write(f+" ");
+                result +=$" {(array[i, j] + 1)} ";
+
             }
             if (array[i, j] % 2 != 0)
-                Console.Write($"{array[i, j]} ");
+            {
+                result += $"{array[i, j]} ";
+            }
 
         }
-        Console.WriteLine();
-    }
 
+    }
+    return result;
 }
 
-int[,] array = new int[4, 5];
 
-FillArray(array);
-PrintArray(array);
+
+
 
 Console.WriteLine();
 
-NotEvenElements(array);
+int[,] NewArr = array[4,5];
+Console.Write(PrintArray(NewArr));
+Console.WriteLine();
+Console.Write(NotEvenElements(NewArr));
+
+
